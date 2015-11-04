@@ -95,7 +95,7 @@ class QC_analysis(object):
 
         cd = check_dependencies_linux.CheckDependencies()
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis"))
-        if not os.path.lexists(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "Trimmomatic-0.33")):
+        if not os.path.isdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "Trimmomatic-0.33")):
             subprocess.call(["unzip", "Trimmomatic-0.33.zip"], stdout=open(os.devnull, 'wb'))
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "Trimmomatic-0.33"))
         for file in os.listdir(datalocation):
@@ -110,7 +110,7 @@ class QC_analysis(object):
 
         cd = check_dependencies_linux.CheckDependencies()
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis"))
-        if not os.path.lexists(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "FastQC")):
+        if not os.path.isdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "FastQC")):
             subprocess.call(["unzip", "fastqc_v0.11.3.zip"], stdout=open(os.devnull, 'wb'))
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "FastQC"))
         subprocess.call("chmod 755 fastqc", shell=True)

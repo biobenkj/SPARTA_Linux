@@ -25,7 +25,7 @@ class Mapping_and_Counting(object):
         genrefname = genref.split("/")[-1]
         copy(gff, os.path.join(analysislocation, 'HTSeq'))
         os.chdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting"))
-        if not os.path.lexists(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "bowtie-1.1.1")):
+        if not os.path.isdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "bowtie-1.1.1")):
             #This will be a problem for Windows users. Distribute with unzipped binaries?
             subprocess.call(["unzip", "bowtie-1.1.1-linux-x86_64.zip"], stdout=open(os.devnull, 'wb'))
         os.chdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "bowtie-1.1.1"))
@@ -73,7 +73,7 @@ class Mapping_and_Counting(object):
 
         cd = check_dependencies_linux.CheckDependencies()
         os.chdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting"))
-        if not os.path.lexists(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "HTSeq-0.6.1")):
+        if not os.path.isdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "HTSeq-0.6.1")):
             subprocess.Popen("tar -zxf HTSeq-0.6.1.tar.gz", stdout=open(os.devnull, 'w'), shell=True).wait()
         os.chdir(os.path.join(cd.getSPARTAdir(options), "Mapping_and_counting", "HTSeq-0.6.1"))
         subprocess.Popen("python setup.py build install --user", shell=True, stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb')).wait()
