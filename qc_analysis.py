@@ -97,7 +97,7 @@ class QC_analysis(object):
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis"))
         if not os.path.lexists(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "Trimmomatic-0.33")):
             subprocess.call(["unzip", "Trimmomatic-0.33.zip"], stdout=open(os.devnull, 'wb'))
-        os.chdir(os.path.join(cd.getpwd(), "Trimmomatic-0.33"))
+        os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "Trimmomatic-0.33"))
         for file in os.listdir(datalocation):
             extension = file.split(".")[1]
             if extension == "fastq" or extension == "fq":
@@ -112,7 +112,7 @@ class QC_analysis(object):
         os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis"))
         if not os.path.lexists(cd.getSPARTAdir(options) + "/QC_analysis/FastQC"):
             subprocess.call(["unzip", "fastqc_v0.11.3.zip"], stdout=open(os.devnull, 'wb'))
-        os.chdir(os.path.join(cd.getpwd(), "FastQC"))
+        os.chdir(os.path.join(cd.getSPARTAdir(options), "QC_analysis", "FastQC"))
         subprocess.call("chmod 755 fastqc", shell=True)
         print "FastQC is assessing your data set for overall quality"
         for file in os.listdir(datalocation):
