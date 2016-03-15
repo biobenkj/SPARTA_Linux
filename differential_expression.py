@@ -274,7 +274,7 @@ class DifferentialExpression(object):
                     mdssamps.append(Rvarlst[reffacnum])
                 for trtfacnum in range(0, trtgrouplength):
                     mdsgroup.append('2')
-                    mdssamps.append(Rvarlst[Rgrouplengths[batchcounter] - refgrouplength + trtfacnum])
+                    mdssamps.append(Rvarlst[Rgrouplengths[batchcounter] - trtgrouplength + trtfacnum])
                 mdsgroup = map(str, mdsgroup)
                 mdsgroupjoin = ','.join(mdsgroup)
                 de_expression.write('ReferenceCondvsExpCond{condval}'.format(condval=condval) + 'mdsgroup <- factor(c(' + mdsgroupjoin + '))\n')
